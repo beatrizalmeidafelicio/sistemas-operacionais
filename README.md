@@ -3,7 +3,7 @@
 ## PID
 O PID é um identificador numérico exclusivo atribuído a cada processo em execução em um sistema operacional. Ele auxilia no gerenciamento e controle de processos.
 
-## 🔹 1. Primeiro contato com `fork()`
+## 1. Primeiro contato com `fork()`
 
 ```c
 #include <sys/types.h>
@@ -49,7 +49,7 @@ O filho imprime seus PIDs, o pai espera e depois diz que o filho terminou.
 
 ---
 
-## 🔹 2. Usando `exec()` para rodar outro programa
+## 2. Usando `exec()` para rodar outro programa
 
 ```c
 #include <stdio.h>
@@ -88,7 +88,7 @@ Cria **2 processos**, mas o filho deixa de rodar o programa original e vira o `l
 
 ---
 
-## 🔹 3. Mostrando pai, filho e avô
+## 3. Mostrando pai, filho e avô
 
 ```c
 #include <stdio.h>
@@ -129,7 +129,7 @@ Dá pra ver claramente a hierarquia: **avô → pai → filho**.
 
 ---
 
-## 🔹 4. Vários forks em sequência
+## 4. Vários forks em sequência
 
 ```c
 #include <sys/types.h>
@@ -158,7 +158,7 @@ Total final: **8 processos** (7 criados + 1 original).
 
 ---
 
-## 🔹 5. Criando irmãos (siblings)
+## 5. Criando irmãos (siblings)
 
 ```c
 #include <stdio.h>
@@ -191,7 +191,7 @@ Temos **5 filhos irmãos (siblings)**, todos com o mesmo pai.
 
 ---
 
-## 🔹 6. Forks com condições
+## 6. Forks com condições
 
 ```c
 #include <stdio.h>
@@ -205,9 +205,9 @@ int main() {
     c1 = fork(); // fork 1
     if(c1 == 0)
         c2 = fork(); // fork 2
-    fork(); // fork 3
+    fork(); // fork 3 - numero de processos dobram
     if(c2 > 0)
-        fork(); // fork 4
+        fork(); // fork 4 - apenas os processos derivados do fork 2 podem ter c2 > 0
 
     return 0;
 }
